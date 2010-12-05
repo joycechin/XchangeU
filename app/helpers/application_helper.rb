@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  
   # Return a title on a per-page basis.
   def title
     base_title = "Xchange-U"
@@ -9,4 +9,5 @@ module ApplicationHelper
       "#{base_title} | #{@title}"
     end
   end
+  
 end
