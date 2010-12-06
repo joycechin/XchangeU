@@ -1,4 +1,4 @@
-<h1>Sign in</h1>
+<h1>Sign In</h1>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
   <div class="field">
@@ -10,8 +10,8 @@
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit "Sign in" %>
+    <%= f.submit "Sign In" %>
   </div>
 <% end %>
 
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<p>New user? <%= link_to "Register Now!", register_path %></p>
