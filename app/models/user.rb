@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   
   # regular expression to ensure @college or @fas harvard emails
-  email_regex = /\A[\w+\-.]+[@college\.harvard\.edu|@fas\.harvard\.edu]$/i
+  email_regex = /\A[a-z\d\-.]+@(college|fas)\.harvard\.edu$/i
   
   # validation reqs for name, email, password fields
   validates :name, :presence => true,
