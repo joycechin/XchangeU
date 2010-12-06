@@ -1,6 +1,33 @@
 <h1>Home</h1>
-<p>
- This is the home page for Xchange-U.
-</p>
 
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<nav class="round login">
+  <form id="login" action="/login" method="post">
+	<table>
+    <tr><td><label for="email">Email</label></td>
+        <td><input name="email" type="text"></td>
+    </tr>
+    <tr><td><label for="password">Password</label></td>
+        <td><input name="password" type="password"></td>
+    </tr>
+    <tr><td></td>
+		<td><input type="submit" value="Login"></td>
+    </tr>
+    </table>	  
+  </form>
+</nav>
+</header>
+
+<section class="round">
+<div class="middle">
+  Xchange-U, the POWER of PEER exchange!
+  Ever wonder how to set up study groups with your reticent peers?
+  Ever want to meet someone doing something interesting?
+  Ever want to couchsurf with people you know are attending college with you?
+  Then SIGN UP to Xchange-U!
+</div>
+<ul>
+    <li><%= link_to "Sign up now!", signup_path, :class => "signup_button round" %></li>
+</ul>
+</section>
+
+
