@@ -33,16 +33,21 @@ class User < ActiveRecord::Base
 	return user if user.has_password?(submitted_password)
   end
   
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
+  end
+  
   private # back-end methods only
 
-    # method to encrypt password, using salt(unique to each user)
+  # method to encrypt password, using salt(unique to each user)
 	def encrypt_password
       self.salt = make_salt if new_record?
 	  self.encrypted_password = encrypt(password)
-    end
+  end
 
 	# method to encrypt strings
-    def encrypt(string)
+  def encrypt(string)
       secure_hash("#{salt}--#{string}") 
 	end
 
@@ -55,4 +60,6 @@ class User < ActiveRecord::Base
 	def secure_hash(string)
 	  Digest::SHA2.hexdigest(string)
 	end
+
+	
 end
