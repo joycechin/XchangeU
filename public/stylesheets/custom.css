@@ -78,9 +78,9 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* Sign up button */
+/* Register button */
 
-a.signup_button {
+a.register_button {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -139,6 +139,7 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
+/* error CSS */
 .field_with_errors {
   margin-top: 10px;
   padding: 2px;

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	    flash[:success] = "Welcome to Xchange-u!"
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = "Register"
       @user.password =""
       @user.password_confirmation =""
       render 'new'

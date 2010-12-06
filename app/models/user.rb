@@ -5,15 +5,14 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   
   # regular expression to ensure @college or @fas harvard emails
-  email_regex = /\A[\w+\-.]+@college.harvard.edu$/i
-  email_regex2 = /\A[\w+\-.]+@fas.harvard.edu$/i
+  email_regex = /\A[\w+\-.]+[@college\.harvard\.edu|@fas\.harvard\.edu]$/i
   
   # validation reqs for name, email, password fields
   validates :name, :presence => true,
 				   :length => { :maximum => 50 }
   validates :email, :presence => true,
 					:length => { :maximum => 100 },
-					:format     => { :with => email_regex || email_regex2},
+					:format     => { :with => email_regex},
 					:uniqueness => { :case_sensitive => false }
   validates :password, :presence     => true,
                        :confirmation => true,
@@ -33,6 +32,7 @@ class User < ActiveRecord::Base
 	return user if user.has_password?(submitted_password)
   end
   
+  # authenticate the cookie's salt
   def self.authenticate_with_salt(id, cookie_salt)
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
