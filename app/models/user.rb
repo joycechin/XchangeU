@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
   
+  has_many :academics, :dependent => :destroy
+  
   # regular expression to ensure @college or @fas harvard emails
   email_regex = /\A[a-z\d\-.]+@(college|fas)\.harvard\.edu$/i
   
@@ -20,6 +22,11 @@ class User < ActiveRecord::Base
   
   before_save :encrypt_password
 
+  def feed
+      # This is preliminary. See Chapter 12 for the full implementation.
+      Academic.where("user_id = ?", id)
+  end
+  
   # checks if submitted pw == encrypted pw on file
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -60,6 +67,5 @@ class User < ActiveRecord::Base
 	def secure_hash(string)
 	  Digest::SHA2.hexdigest(string)
 	end
-
 	
 end

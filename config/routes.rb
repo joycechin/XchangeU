@@ -1,6 +1,7 @@
 Xchangeu::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :academics, :only => [:create, :destroy]
   
   get "sessions/new"
   get "users/new"

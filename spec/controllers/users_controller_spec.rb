@@ -42,6 +42,8 @@ describe UsersController do
     
   end
   
+  end
+  
   describe "GET 'show'" do
 
     before(:each) do
@@ -72,6 +74,17 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar")
     end
+    
+    it "should show the user's academic recording" do
+      mp1 = Factory(:academic, :user => @user, :learn => "Foo bar", :teach => "Bar foo")
+      mp2 = Factory(:academic, :user => @user, :learn => "Baz quux", :teach => "Quux baz")
+      get :show, :id => @user
+      response.should have_selector("span.learn", :learn => mp1.content)
+      response.should have_selector("span.teach", :teach => mp1.content)
+      response.should have_selector("span.learn", :learn => mp2.content)
+      response.should have_selector("span.teach", :teach => mp2.content)
+    end
+    
   end
 
   describe "GET 'new'" do
@@ -187,6 +200,5 @@ describe UsersController do
                                          :content => "change")
     end
   end
-
 
 end

@@ -9,3 +9,8 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@college.harvard.edu"
 end
+
+Factory.define :academic do |micropost|
+  academic.content "Foo bar"
+  academic.association :user
+end

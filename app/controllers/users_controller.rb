@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @academics = @user.academics.paginate(:page => params[:page])
 	  @title = @user.name
   end
   
@@ -19,17 +20,17 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      sign_in @user
-	    flash[:success] = "Welcome to Xchange-u!"
-      redirect_to @user
-    else
-      @title = "Register"
-      @user.password =""
-      @user.password_confirmation =""
-      render 'new'
-    end
+      @user = User.new(params[:user])
+      if @user.save
+        sign_in @user
+        flash[:success] = "Welcome to the XchangeU!"
+        redirect_to @user
+      else
+        @title = "Sign up"
+        @user.password =""
+        @user.password_confirmation=""
+        render 'new'
+      end
   end
   
   def edit

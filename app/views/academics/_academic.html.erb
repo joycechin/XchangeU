@@ -1,0 +1,16 @@
+<tr>
+  <td class="academic">
+    <span class="learn"><%= academic.learn %></span>
+    <span class="teach"><%= academic.teach %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(academic.created_at) %> ago.
+    </span>
+  </td>
+  <% if current_user?(academic.user) %>
+  <td>
+    <%= link_to "delete", academic, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => academic.content %>
+  </td>
+  <% end %>
+</tr>

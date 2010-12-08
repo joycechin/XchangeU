@@ -5,10 +5,26 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+	  <% unless @user.academics.empty? %>
+	    <table class="academics" summary="User academics">
+	      <%= render @academics %>
+	    </table>
+	      <%= will_paginate @academics %>
+	  <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+	  <strong>Academics</strong> <%= @user.academics.count %>
     </td>
   </tr>
 </table>
+
+<section class="round">
+<br><br>
+<center>
+    <%= link_to "AcademicX", register_path, :class => "register_button round" %>
+<br>
+	<%= link_to "TravelX", register_path, :class => "register_button round" %>
+</center>
+</section class="round">

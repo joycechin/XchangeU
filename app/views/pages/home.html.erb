@@ -1,3 +1,17 @@
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="academic">Share what?</h1>
+        <%= render 'shared/academic_form' %>
+		<%= render 'shared/feed' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
 <h1>Welcome to XchangeU</h1>
 
 <nav class="round login">
@@ -30,5 +44,4 @@
     <%= link_to "Register now!", register_path, :class => "register_button round" %>
 </center>
 </section>
-
-
+<% end %>
