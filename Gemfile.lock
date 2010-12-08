@@ -48,6 +48,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     nokogiri (1.4.4)
+    nokogiri (1.4.4-x86-mingw32)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -92,6 +93,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   annotate-models (= 1.0.4)
@@ -101,7 +103,6 @@ DEPENDENCIES
   rails (= 3.0.3)
   rspec (= 2.1.0)
   rspec-rails (= 2.1.0)
-  spork (= 0.8.4)
   sqlite3-ruby (= 1.2.5)
   webrat (= 0.7.1)
   will_paginate (= 3.0.pre2)
